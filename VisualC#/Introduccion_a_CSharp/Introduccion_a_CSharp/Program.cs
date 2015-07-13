@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Introduccion_a_CSharp
 {
@@ -121,8 +122,30 @@ namespace Introduccion_a_CSharp
              Console.ReadKey();
         }
 
-         static void Main(string[] args)
+         void ciclicas()
          {
+             /*Estructura FOR..*/
+             for (int c = 1; c < 10; c++)
+             {
+                 Console.WriteLine("el contador FOR esta en " + c);
+             }
+
+             /*Estrucutura WHILE...*/
+             int contador = 1;
+             while (contador < 20)
+             {
+                 Console.WriteLine("el contador WHILE esta en " + contador);
+                 contador++;
+             }
+
+             /*Estrucutura DO..WHILE..*/
+             int contador2 = 1;
+             do
+             {
+                 Console.WriteLine("el contador DO WHILE esta en " + contador2);
+                 //contador2++;
+             } while (contador2 >= 10);
+             
              /*Imprimir en pantalla*/
              Console.WriteLine(">> Fin del Prograna - Press ENTER<<");
 
@@ -132,4 +155,69 @@ namespace Introduccion_a_CSharp
 
 
     }
+
+    class Arrays{
+        void vector()
+        {
+            string[] nombre = new string[10];
+            nombre[0] = "Joel";
+            nombre[1] = "Victor";
+            nombre[2] = "Martin";
+            nombre[3] = "Toto";
+            nombre[4] = "Follo";
+            nombre[5] = "Javier";
+
+            foreach (string i in nombre)
+            {
+                Console.WriteLine(i);
+            }
+
+            /*Imprimir en pantalla*/
+            Console.WriteLine(">> Fin del Prograna - Press ENTER<<");
+
+            /*Mantener la consola hasta que se preciona enter*/
+            Console.ReadKey();
+        }
+    }
+
+    class EntradaSalida
+    {
+        void LecturaEscrituraArchvios()
+        {
+            /*Lectura y escritura de archivos*/
+            StreamWriter texto = File.AppendText("prueba.txt");//Para no borrar el contenido anterior del archivo
+            texto.WriteLine("C# es un lenguaje para tontos!");
+            texto.Close();
+
+            TextReader leerTexto = new StreamReader("prueba.txt");
+            Console.WriteLine(leerTexto.ReadLine());
+            
+            /*Imprimir en pantalla*/
+            Console.WriteLine(">> Fin del Prograna - Press ENTER<<");
+
+            /*Mantener la consola hasta que se preciona enter*/
+            Console.ReadKey();
+        }
+
+        void agenda()
+        {
+            Console.WriteLine("Ingrese el nombre >");
+            string nombre = Console.ReadLine();
+
+            Console.WriteLine("Ingrese el telefono >");
+            string telefono = Console.ReadLine();
+
+            StreamWriter agenda = File.AppendText("agenda.csv");
+            agenda.WriteLine(nombre+","+telefono);
+            agenda.Close();
+            Console.WriteLine("Registro guardado con exito!");
+
+            /*Imprimir en pantalla*/
+            Console.WriteLine(">> Fin del Prograna - Press ENTER<<");
+
+            /*Mantener la consola hasta que se preciona enter*/
+            Console.ReadKey();
+        }
+    }
+    
 }
